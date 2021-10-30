@@ -15,14 +15,14 @@ provider "aws" {
   region = "us-west-2"
 }
 
-resource "aws_key_pair" "ubuntu_jupyterlab" {
-  key_name = "ubuntu_jupyterlab"
+resource "aws_key_pair" "docker_jupyterlab" {
+  key_name = "docker_jupyterlab"
   # You will need to ssh-keygen a keypair by name of 'key' in the same directory as the .tf files 
   public_key = file("key.pub")
 }
 
-resource "aws_security_group" "ubuntu_jupyterlab" {
-  name        = "ubuntu_jupyterlab_security-group"
+resource "aws_security_group" "docker_jupyterlab" {
+  name        = "docker_jupyterlab_security-group"
   description = "Allow SSH, Ephemeral Port and JupyterLab traffic"
 
   # allows SSH on port 22, in production would lock down to an IP (range)
@@ -66,16 +66,16 @@ resource "aws_security_group" "ubuntu_jupyterlab" {
   }
 }
 
-resource "aws_instance" "ubuntu_jupyterlab" {
+resource "aws_instance" "docker_jupyterlab" {
   # Using the base free tier Amazon Linux 2 AMI currently
   ami           = data.aws_ami.amazon-linux-2.id
   instance_type = "t2.micro"
-  key_name      = aws_key_pair.ubuntu_jupyterlab.key_name
+  key_name      = aws_key_pair.docker_jupyterlab.key_name
   # runs the startup script to install and start docker, then run JupyterLab on 8888 w/token auth
   user_data = file("startup.sh")
 
   vpc_security_group_ids = [
-    aws_security_group.ubuntu_jupyterlab.id
+    aws_security_group.docker_jupyterlab.id
   ]
 
   tags = {
