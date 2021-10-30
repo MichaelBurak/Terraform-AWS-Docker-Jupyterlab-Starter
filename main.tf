@@ -68,7 +68,7 @@ resource "aws_security_group" "ubuntu_jupyterlab" {
 
 resource "aws_instance" "ubuntu_jupyterlab" {
   # Using the base free tier Amazon Linux 2 AMI currently
-  ami           = "ami-013a129d325529d4d"
+  ami           = data.aws_ami.amazon-linux-2.id
   instance_type = "t2.micro"
   key_name      = aws_key_pair.ubuntu_jupyterlab.key_name
   # runs the startup script to install and start docker, then run JupyterLab on 8888 w/token auth
@@ -83,3 +83,12 @@ resource "aws_instance" "ubuntu_jupyterlab" {
   }
 }
 
+data "aws_ami" "amazon-linux-2" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-ebs"]
+  }
+  owners = ["amazon"]
+}
