@@ -23,7 +23,7 @@ resource "aws_key_pair" "ubuntu_jupyterlab" {
 
 resource "aws_security_group" "ubuntu_jupyterlab" {
   name        = "ubuntu_jupyterlab_security-group"
-  description = "Allow SSH, HTTPS, HTTP and Jupyter Lab traffic"
+  description = "Allow SSH, Ephemeral Port and JupyterLab traffic"
 
   # allows SSH on port 22, in production would lock down to an IP (range)
 
@@ -44,7 +44,7 @@ resource "aws_security_group" "ubuntu_jupyterlab" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # for jupyter lab, this can remain but preferably change to your own IP (range) 
+  # for JupyterLab, this can remain but preferably change to your own IP (range) 
   ingress {
     description = "HTTP"
     from_port   = 8888
@@ -71,7 +71,7 @@ resource "aws_instance" "ubuntu_jupyterlab" {
   ami           = "ami-013a129d325529d4d"
   instance_type = "t2.micro"
   key_name      = aws_key_pair.ubuntu_jupyterlab.key_name
-  # runs the startup script to install and start docker, run jupyter lab on 8888 w/token auth
+  # runs the startup script to install and start docker, then run JupyterLab on 8888 w/token auth
   user_data = file("startup.sh")
 
   vpc_security_group_ids = [
