@@ -25,12 +25,17 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - Figure out any reasonable inputs and outputs to include. 
 - Move to Kubernetes(EKS) and a more robust VM to run ML workloads on.
 
-## Things I've Learned About:
+## Things I've Learned About/Observations:
 - cloud-init for user_data logs
 - Jupyter notebook auth fiddling around between (failing at) setting a password to setting a token in various ways.
 - Unsetting environmental variables for AWS credentials was needed for some reason to use terraform's AWS provider??
 - That I am still not sure what or if to tag AWS resources with default tags.
 - Ephemeral ports and their relationship to inbound traffic on Linux such as yum commands
+- NACL, ACL, security group intricacies.
+- Some linux command line stuff that didn't make the cut, such as work with awk and redirecting/parsing log stuff. 
+- Terraform provisioners are evidently not that popular and have issues, or I'd have used remote exec.
+- Some of the definite limitations of Terraform as specifically a provisioning tool are shored up here by user_data and shell scripting, but I can see the usefulness of Ansible and/or Jenkins here and might integrate them. 
+- Packer might be worth examining for a purpose-built lean ML IDE AMI/VM.
 
 ## Resources Used:
 - https://dev.to/aakatev/deploy-ec2-instance-in-minutes-with-terraform-ip2
