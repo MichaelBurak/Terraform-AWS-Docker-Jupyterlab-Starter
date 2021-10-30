@@ -4,7 +4,7 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 
 ## Pre-reqs
 
-- AWS CLI installed configured: to allow for access to AWS credentials from Terraform with a user who has permissions to CRUD EC2 instances and other resources involved (will work on getting together a list and sample permissions.)
+- AWS CLI installed configured: to allow for access to AWS credentials from Terraform with a user who has permissions to CRUD EC2 instances and other resources involved (will work on getting together a list and sample permissions for an IAM role instead of using AWS CLI's IAM creds.)
 - Terraform installed
 
 ## How To 
@@ -13,7 +13,6 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - To access Jupyter lab, use the output ec2 public dns at ``` :8888/?token=easy ```
 
 ## TO DO: 
-- Include volume(s) for persistence(right now if the docker container dies, data is lost, though also it would need to be manually spun back up, which is why k8s looks attractive for self-healing.)
 - IAM role for this project only assumed via. STS.
 - Change ingress rules to be SSH and move ephemeral port opening to NACL.
 - Use salted hash password for entry instead of insecure token, or at least pass the token string in as input to tf.
@@ -21,7 +20,7 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - SSH keygen automation?
 - Figuring out saving state method.
 - Change AWS AMI id to grab latest free tier / t2.micro instead of hardcoding?
-- Decide if using elastic IP by default, set up DNS, etc.
+- Decide if using elastic IP by default, set up DNS, etc. bells and whistles
 - Refactor the tags for the instance and attendant resources.
 - Figure out any reasonable inputs and outputs to include. 
 - Move to Kubernetes(EKS) and a more robust VM to run ML workloads on.
