@@ -13,13 +13,12 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - To access JupyterLab, use the output ec2 public dns at ``` :8888/lab?token=easy ```
 
 ## TO DO: 
-- IAM role for this project only assumed via. STS.
+- IAM role for this project only assumed via. STS?
 - Change ingress rules to be SSH and move ephemeral port opening to NACL.
 - Use salted hash password for entry instead of insecure token, or at least pass the token string in as input to tf.
 - Implement non ec2-user user for linux VM, i.e. user for Docker/JupyterLab only. (Is this needed? ec2-user isn't root but just default to my understanding.)
 - SSH keygen automation?
-- Figuring out saving state method.
-- Change AWS AMI id to grab latest free tier / t2.micro instead of hardcoding?
+- Figuring out saving state method(S3?)
 - Decide if using elastic IP by default, set up DNS, etc. bells and whistles
 - Refactor the tags for the instance and attendant resources.
 - Figure out any reasonable inputs and outputs to include. 
