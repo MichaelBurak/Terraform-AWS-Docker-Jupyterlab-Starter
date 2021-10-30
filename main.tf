@@ -3,7 +3,7 @@ resource "aws_key_pair" "docker-jupyterlab" {
   key_name = "docker-jupyterlab"
   # You will need to ssh-keygen a keypair by name of 'key' in the same directory as the .tf files 
   public_key = file("key.pub")
-  tags = var.resource_tags
+  tags       = var.resource_tags
 }
 
 
