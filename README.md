@@ -13,15 +13,15 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - To access JupyterLab, use the output ec2 public dns at ``` :8888/lab?token=easy ```
 
 ## TO DO: 
-- IAM role for this project only assumed via. STS?
-- Change ingress rules to be SSH and move ephemeral port opening to NACL.
-- Use salted hash password for entry instead of insecure token, or at least pass the token string in as input to tf.
-- Implement non ec2-user user for linux VM, i.e. user for Docker/JupyterLab only. (Is this needed? ec2-user isn't root but just default to my understanding.)
-- SSH keygen automation?
-- Figuring out saving state method(S3?)
+- IAM role for this project only assumed via. STS? (Nt sure if necessary.)
+- Move ephemeral port opening to NACL.
+- Use salted hash password for entry instead of insecure token, or at least pass the token string in as input to tf, figure out SSL and certificates.
+- Implement non ec2-user user for linux VM, i.e. user for Docker/JupyterLab only. (Not sure if necessary, ec2-user isn't root but just default to my understanding.)
+- SSH keygen automation for setup?
+- Figuring out saving state method(S3? if necessary.)
 - Decide if using elastic IP by default, set up DNS, etc. bells and whistles
-- Figure out any reasonable inputs and outputs to include. 
-- Move to Kubernetes(EKS) and a more robust VM to run ML workloads on (or a variable for the tier of AMI for a user to choose from depending on if they are just toying around or looking to run heavier workloads.)
+- Figure out any remaining reasonable inputs and outputs to include. 
+- Move to Kubernetes(EKS) and a more robust VM to run ML workloads on.
 
 ## Things I've Learned About/Observations:
 - cloud-init for user_data logs
@@ -36,6 +36,7 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - Packer might be worth examining for a purpose-built lean ML IDE AMI/VM.
 - Better practices with Terraform projects(i.e. not lazily putting everything in main.tf)
 - Network interfaces and security groups and other interactions/connections between resources around EC2.
+- Better use of variables.
 
 ## Resources Used:
 - https://dev.to/aakatev/deploy-ec2-instance-in-minutes-with-terraform-ip2
