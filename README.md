@@ -22,7 +22,7 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - Decide if using elastic IP by default, set up DNS, etc. bells and whistles
 - Refactor the tags for the instance and attendant resources.
 - Figure out any reasonable inputs and outputs to include. 
-- Move to Kubernetes(EKS) and a more robust VM to run ML workloads on.
+- Move to Kubernetes(EKS) and a more robust VM to run ML workloads on (or a variable for the tier of AMI for a user to choose from depending on if they are just toying around or looking to run heavier workloads.)
 
 ## Things I've Learned About/Observations:
 - cloud-init for user_data logs
@@ -35,6 +35,8 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - Terraform provisioners are evidently not that popular and have issues, or I'd have used remote exec.
 - Some of the definite limitations of Terraform as specifically a provisioning tool are shored up here by user_data and shell scripting, but I can see the usefulness of Ansible and/or Jenkins here and might integrate them. 
 - Packer might be worth examining for a purpose-built lean ML IDE AMI/VM.
+- Better practices with Terraform projects(i.e. not lazily putting everything in main.tf)
+- Network interfaces and security groups and other interactions/connections between resources around EC2.
 
 ## Resources Used:
 - https://dev.to/aakatev/deploy-ec2-instance-in-minutes-with-terraform-ip2
