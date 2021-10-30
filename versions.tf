@@ -12,5 +12,5 @@ terraform {
 provider "aws" {
   profile = "default"
   # change region if you need to for cost purposes, etc, but make sure to use a supported AMI
-  region = "us-west-2"
+  region = var.aws_region
 }

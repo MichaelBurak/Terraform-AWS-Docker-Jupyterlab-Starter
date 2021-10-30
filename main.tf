@@ -3,6 +3,7 @@ resource "aws_key_pair" "docker-jupyterlab" {
   key_name = "docker-jupyterlab"
   # You will need to ssh-keygen a keypair by name of 'key' in the same directory as the .tf files 
   public_key = file("key.pub")
+  tags = var.resource_tags
 }
 
 
@@ -20,9 +21,7 @@ resource "aws_instance" "docker-jupyterlab" {
     aws_security_group.vpc-web.id
   ]
 
-  tags = {
-    Name = "Terraform"
-  }
+  tags = var.resource_tags
 }
 
 data "aws_ami" "amazon-linux-2" {

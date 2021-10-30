@@ -20,7 +20,6 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - SSH keygen automation?
 - Figuring out saving state method(S3?)
 - Decide if using elastic IP by default, set up DNS, etc. bells and whistles
-- Refactor the tags for the instance and attendant resources.
 - Figure out any reasonable inputs and outputs to include. 
 - Move to Kubernetes(EKS) and a more robust VM to run ML workloads on (or a variable for the tier of AMI for a user to choose from depending on if they are just toying around or looking to run heavier workloads.)
 
