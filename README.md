@@ -10,7 +10,7 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 ## How To 
 - Create a key pair using ssh keygen by the name of "key" (or change the *aws_key_pair* argument *public_key*'s file name resource accordingly, I may change this to a variable going forward.) I am looking into automating this creation and use. 
 - Run ``` terraform init ``` --> ``` terraform fmt ``` --> ``` terraform validate ``` --> ``` terraform plan ``` --> ``` terraform apply ```  to create/modify the resources, and ``` terraform destroy ``` the resources in state. 
-- To access JupyterLab, use the output ec2 public dns at ``` :8888/?token=easy ```
+- To access JupyterLab, use the output ec2 public dns at ``` :8888/lab?token=easy ```
 
 ## TO DO: 
 - IAM role for this project only assumed via. STS.
@@ -41,3 +41,5 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - https://dev.to/aakatev/deploy-ec2-instance-in-minutes-with-terraform-ip2
 - https://liamarjitbhogal.wordpress.com/2018/10/13/what-port-does-yum-use-in-amazon-aws/
 - https://github.com/JainSkariahThomas/Terraform
+- https://www.kisphp.com/terraform/terraform-find-ubuntu-and-amazon-linux-2-amis
+- https://www.cloudbees.com/blog/terraforming-your-docker-environment-on-aws
