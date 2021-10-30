@@ -8,13 +8,16 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - To get where to ssh into for accessing Jupyter Lab(this is where I am currently working hardest to streamline and automate) you will need to ssh using the specified key into the instance, then run ``` docker ps ``` --> ``` docker logs [CONTAINER] ``` of the running Jupyter Notebook + Lab to get the URL with the token, then use the output EC2 DNS at port 8888 to login via. token. 
 
 ## TO DO: 
-- Getting the login token or setting password for Jupyter Lab to allow for logging in without looking at jupyter/docker logs for the token.
+- Include volume(s) for persistence.
+- Implement non ec2-user user for linux VM, user for docker/jupyterlab only.
 - Change ingress rules to be less permissive.
+- Use salted hash password for entry instead of insecure token, or at least pass the token string in as input to tf.
 - SSH keygen automation.
 - Figuring out saving state method.
 - Decide if using elastic IP by default. 
 - Refactor the tags for the instance and attendant resources.
-- Figure out reasonable inputs and outputs to include. 
+- Figure out any reasonable inputs and outputs to include. 
+- Move to Kubernetes and a more robust VM to run ML workloads on.
 
 ## Resources Used:
 - https://dev.to/aakatev/deploy-ec2-instance-in-minutes-with-terraform-ip2
