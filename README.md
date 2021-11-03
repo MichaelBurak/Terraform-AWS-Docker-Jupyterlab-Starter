@@ -19,9 +19,9 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - Implement non ec2-user user for linux VM, i.e. user for Docker/JupyterLab only. (Not sure if necessary, ec2-user isn't root but just default to my understanding.)
 - SSH keygen automation for setup?
 - Figuring out saving state method(S3? if necessary.)
-- Decide if using elastic IP by default, set up DNS, etc. bells and whistles
+- Decide if using elastic IP by default, set up DNS, etc. bells and whistles (have set up EBS)
 - Figure out any remaining reasonable inputs and outputs to include. 
-- Move to Kubernetes(EKS) and a more robust VM to run ML workloads on.
+- Autoscaling groups OR move to Kubernetes(EKS) and a more robust VM to run ML workloads on.
 
 ## Things I've Learned About/Observations:
 - cloud-init for user_data logs
@@ -37,6 +37,8 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - Better practices with Terraform projects(i.e. not lazily putting everything in main.tf)
 - Network interfaces and security groups and other interactions/connections between resources around EC2.
 - Better use of variables.
+- Lifecycle rules re: not refreshing instances when AMI updates.
+- Attachment points on unix devices and how to best attach EBS volumes to EC2 instances.
 
 ## Resources Used:
 - https://dev.to/aakatev/deploy-ec2-instance-in-minutes-with-terraform-ip2
@@ -44,3 +46,4 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - https://github.com/JainSkariahThomas/Terraform
 - https://www.kisphp.com/terraform/terraform-find-ubuntu-and-amazon-linux-2-amis
 - https://www.cloudbees.com/blog/terraforming-your-docker-environment-on-aws
+- https://www.thinkstack.co/blog/using-terraform-to-create-an-ec2-instance-with-cloudwatch-alarm-metrics
