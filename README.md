@@ -2,9 +2,21 @@
 
 This is a set of Terraform files and shell scripting to spin up a basic EC2 instance with a Dockerized version of a basic Jupyter Notebook environment with JupyterLab for DS/ML development.
 
+## The Infrastructure In Question
+The following is provisioned by this Terraform script:
+- An EC2 instance (defaulting to a t2.micro AWS Linux 2 VM in us-west-2a) with:
+    - Elastic Block Storage(8GB) volume attached
+    - CloudWatch Metric Alarm for monitoring CPU utilization
+    - Security groups allowing for SSH inbound, ephemeral ports inbound, and port 8888 inbound(for accessing JupyterLab)
+    - AWS Key pair for SSH access
+    - Dockerized JupyterLab using the [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html) installed and running on port 8888, attached via. Docker volumes to persist data. 
+
+## How It Works (High-Level)
+- Terraform is used to provision the appropriate AWS resources and install using user_data of a shell script the necessary Docker resources, then pull down and run JupyterLab off an existing image from Jupyter Docker Stacks. 
+
 ## Pre-reqs
 
-- AWS CLI installed configured: to allow for access to AWS credentials from Terraform with a user who has permissions to CRUD EC2 instances and other resources involved (will work on getting together a list and sample permissions for an IAM role instead of using AWS CLI's IAM creds.)
+- AWS CLI installed configured: to allow for access to AWS credentials from Terraform with a user who has permissions to administrate EC2 instances and other resources involved (will work on getting together a list and sample permissions for an IAM role instead of using AWS CLI's IAM creds.)
 - Terraform installed
 
 ## How To 
@@ -47,3 +59,5 @@ This is a set of Terraform files and shell scripting to spin up a basic EC2 inst
 - https://www.kisphp.com/terraform/terraform-find-ubuntu-and-amazon-linux-2-amis
 - https://www.cloudbees.com/blog/terraforming-your-docker-environment-on-aws
 - https://www.thinkstack.co/blog/using-terraform-to-create-an-ec2-instance-with-cloudwatch-alarm-metrics
+- https://www.udemy.com/course/terraform-on-aws-with-sre-iac-devops-real-world-demos/learn/
+- https://kodekloud.com/ 's Terraform For Absolute Beginners course
