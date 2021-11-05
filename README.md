@@ -41,7 +41,7 @@ The following is provisioned by this Terraform script:
 ## Things I've Learned About/Observations:
 - cloud-init for user_data logs
 - Jupyter notebook auth fiddling around between (failing at) setting a password to setting a token in various ways.
-- Unsetting environmental variables for AWS credentials was needed for some reason to use terraform's AWS provider??
+- Unsetting environmental variables of AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for AWS credentials was needed for some reason to use terraform's AWS provider?
 - That I am still not sure what or if to tag AWS resources with default tags.
 - Ephemeral ports and their relationship to inbound traffic on Linux such as yum commands
 - NACL, ACL, security group intricacies.

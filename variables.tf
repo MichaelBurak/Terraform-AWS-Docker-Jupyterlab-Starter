@@ -11,11 +11,12 @@ variable "availability_zone" {
   default     = "us-west-2a"
 }
 
-variable "bucket" {
-  description="AWS S3 bucket URL"
-  type = "string"
-  default = "docker-jupyterlab-${data.aws_canonical_user_id.current.id}"
-}
+# trying to figure out a better way to create a default, can't reference data
+# variable "bucket" {
+#   description="AWS S3 bucket URL"
+#   type = "string"
+#   default = "docker-jupyterlab-${data.aws_canonical_user_id.current.id}"
+# }
 
 
 

@@ -24,7 +24,7 @@ resource "aws_instance" "docker-jupyterlab" {
 
   tags = var.resource_tags
 
-  # does not recreate instance when ami is updated
+  # enforces behavir that TF does not recreate instance when ami is updated
   lifecycle {
     ignore_changes = [ami]
   }
@@ -32,7 +32,7 @@ resource "aws_instance" "docker-jupyterlab" {
 }
 
 resource "aws_ebs_volume" "docker-jupyterlab" {
-  # change from hardcoded
+  # change from hardcoded size later
   availability_zone = var.availability_zone
   size              = 8
 }
