@@ -10,6 +10,15 @@ variable "availability_zone" {
   type        = string
   default     = "us-west-2a"
 }
+
+var "bucket" {
+  description="AWS S3 bucket URL"
+  type = "string"
+  default = "docker-jupyterlab-${data.aws_canonical_user_id.current.id}"
+}
+
+
+
 variable "resource_tags" {
   description = "Universal tags across resources"
   type        = map(string)

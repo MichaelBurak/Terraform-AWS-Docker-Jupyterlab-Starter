@@ -8,7 +8,8 @@ The following is provisioned by this Terraform script:
     - Elastic Block Storage(8GB) volume attached
     - CloudWatch Metric Alarm for monitoring CPU utilization
     - Security groups allowing for SSH inbound, ephemeral ports inbound, and port 8888 inbound(for accessing JupyterLab)
-    - AWS Key pair for SSH access
+    - AWS Key Pair for SSH access
+    - S3 bucket for external storage
     - Dockerized JupyterLab using the [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html) installed and running on port 8888, attached via. Docker volumes to persist data. 
 
 ## How It Works (High-Level)
@@ -30,7 +31,9 @@ The following is provisioned by this Terraform script:
 - Use salted hash password for entry instead of insecure token, or at least pass the token string in as input to tf, figure out SSL and certificates.
 - Implement non ec2-user user for linux VM, i.e. user for Docker/JupyterLab only. (Not sure if necessary, ec2-user isn't root but just default to my understanding.)
 - SSH keygen automation for setup?
-- Figuring out saving state method(S3? if necessary.)
+- Install boto on create for JupyterLab
+- Allow S3 access to S3 bucket for working on files with Boto in Jupyter
+- Use S3 for state storage.
 - Decide if using elastic IP by default, set up DNS, etc. bells and whistles (have set up EBS)
 - Figure out any remaining reasonable inputs and outputs to include. 
 - Autoscaling groups OR move to Kubernetes(EKS) and a more robust VM to run ML workloads on.
