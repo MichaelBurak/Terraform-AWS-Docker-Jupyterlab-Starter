@@ -11,7 +11,7 @@ variable "availability_zone" {
   default     = "us-west-2a"
 }
 
-var "bucket" {
+variable "bucket" {
   description="AWS S3 bucket URL"
   type = "string"
   default = "docker-jupyterlab-${data.aws_canonical_user_id.current.id}"
