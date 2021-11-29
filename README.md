@@ -27,13 +27,13 @@ The following is provisioned by this Terraform script:
 
 - Create a key pair using ssh keygen by the name of "key" (or change the _aws_key_pair_ argument _public_key_'s file name resource accordingly, I may change this to a variable going forward.) I am looking into automating this creation and use.
 - Run `terraform init` --> `terraform fmt` --> `terraform validate` --> `terraform plan` --> `terraform apply` to create/modify the resources, and `terraform destroy` the resources in state.
-- To access JupyterLab, use the output ec2 public dns at `:8888/lab?token=easy`
+- To access JupyterLab, use the output ec2 public dns at `:8888/lab?token={terraform output jupyter-lab-token}`
 
 ## TO DO:
 
 - IAM role for this project only assumed via. STS? (Not sure if necessary.)
 - Move ephemeral port opening to NACL.
-- Use salted hash password for entry instead of insecure token, or at least pass the token string in as input to tf, figure out SSL and certificates. This could be done with terraform outputs though?
+- Solve issue with templatefile wanting to introspect all variables in startup.sh
 - SSH keygen automation for setup?
 - Install boto on create for JupyterLab
 - Allow S3 access to S3 bucket for working on files with Boto in Jupyter
