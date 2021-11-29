@@ -46,7 +46,7 @@ The following is provisioned by this Terraform script:
 
 - cloud-init for user_data logs
 - Jupyter notebook auth fiddling around between (failing at) setting a password to setting a token in various ways.
-- Unsetting environmental variables of AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for AWS credentials was needed for some reason to use terraform's AWS provider?
+- Unsetting environmental variables of AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY for AWS credentials was needed for some reason to use terraform's AWS provider? (This is likely a config issue.)
 - That I am still not sure what or if to tag AWS resources with default tags.
 - Ephemeral ports and their relationship to inbound traffic on Linux such as yum commands
 - NACL, ACL, security group intricacies.
@@ -59,6 +59,7 @@ The following is provisioned by this Terraform script:
 - Better use of variables.
 - Lifecycle rules re: not refreshing instances when AMI updates.
 - Attachment points on unix devices and how to best attach EBS volumes to EC2 instances.
+- Randomness in Terraform and templatefile to add randomness to other files
 
 ## Resources Used:
 
@@ -70,3 +71,4 @@ The following is provisioned by this Terraform script:
 - https://www.thinkstack.co/blog/using-terraform-to-create-an-ec2-instance-with-cloudwatch-alarm-metrics
 - https://www.udemy.com/course/terraform-on-aws-with-sre-iac-devops-real-world-demos/learn/
 - https://kodekloud.com/ 's Terraform For Absolute Beginners course
+- https://www.phillipsj.net/posts/random-things-with-terraform/
