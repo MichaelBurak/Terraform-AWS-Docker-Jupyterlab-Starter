@@ -31,6 +31,7 @@ The following is provisioned by this Terraform script:
 
 ## TO DO:
 
+- Turn region into input variable.
 - IAM role for this project only assumed via. STS? (Not sure if necessary.)
 - Move ephemeral port opening to NACL.
 - Solve issue with templatefile wanting to introspect all variables in startup.sh
