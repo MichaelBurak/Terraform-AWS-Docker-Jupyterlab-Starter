@@ -24,7 +24,7 @@ variable "resource_tags" {
   description = "Universal tags across resources"
   type        = map(string)
   default = {
-    name        = "terraform-docker-jupyterlab"
+    Name        = "terraform-docker-jupyterlab"
     environment = "dev"
   }
 }
