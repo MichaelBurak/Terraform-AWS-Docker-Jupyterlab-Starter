@@ -7,3 +7,7 @@ output "ec2-public-dns" {
 output "s3-bucket-domain" {
   value = aws_s3_bucket.docker-jupyterlab.bucket_domain_name
 }
+
+output "jupyter-lab-token" {
+  value = random_pet.token.id
+}

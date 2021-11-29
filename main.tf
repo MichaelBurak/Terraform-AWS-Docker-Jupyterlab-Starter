@@ -1,3 +1,8 @@
+resource "random_pet" "token" {
+  length = 2
+}
+
+
 resource "aws_key_pair" "docker-jupyterlab" {
   # Having issues renaming or switching out this key, also should really be in vars or its own file
   key_name = "docker-jupyterlab"
@@ -14,7 +19,7 @@ resource "aws_instance" "docker-jupyterlab" {
   instance_type = "t2.micro"
   key_name      = aws_key_pair.docker-jupyterlab.key_name
   # runs the startup script to install and start docker, then run JupyterLab on 8888 w/token auth
-  user_data         = file("startup.sh")
+  user_data         = templatefile("startup.sh", { token = random_pet.token.id })
   availability_zone = var.availability_zone
 
   vpc_security_group_ids = [
