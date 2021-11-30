@@ -1,0 +1,36 @@
+# Actually forgot the AMI is amzn-linux2 and so needs linux-extra or shell script?
+# Anyway this doesn't work yet
+- hosts: docker-jupyterlab
+  become: True
+  gather_facts: True
+  tasks:
+    - name: Upgrade all yum packages
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install Docker prereqs
+      yum:
+        name: "{{ item }}"
+        state: latest
+        with_items:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+
+    - name: "Setup Docker repo"
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+        mode: 0644
+
+    - name: Install docker
+      yum:
+        name: docker-ce
+        state: latest
+
+    - name: Start and enable Docker daemon
+      service:
+        name: docker
+        state: started
+        enabled: yes

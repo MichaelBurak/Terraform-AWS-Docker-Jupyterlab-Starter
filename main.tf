@@ -11,6 +11,11 @@ resource "aws_key_pair" "docker-jupyterlab" {
   tags       = var.resource_tags
 }
 
+# generate inventory file for Ansible for idempotency vs. using shell script
+# resource "local_file" "ansible_host" {
+#   content  = templatefile("./templates/hosts.tpl", { ec2_ip = aws_instance.docker-jupyterlab.public_ip })
+#   filename = "./ansible/inventory/docker-jupyterlab"
+# }
 
 
 resource "aws_instance" "docker-jupyterlab" {
