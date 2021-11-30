@@ -35,7 +35,8 @@ The following is provisioned by this Terraform script:
 - IAM role for this project only assumed via. STS? (Not sure if necessary.)
 - Move ephemeral port opening to NACL.
 - Solve issue with templatefile wanting to introspect all variables in startup.sh
-- SSH keygen automation for setup?
+- SSH keygen automation for setup
+  - No longer hardcode key (difficulties come in passing around private keys for security)
 - Install boto on create for JupyterLab
 - Allow S3 access to S3 bucket for working on files with Boto in Jupyter
 - Use S3 for state storage.
@@ -61,6 +62,8 @@ The following is provisioned by this Terraform script:
 - Lifecycle rules re: not refreshing instances when AMI updates.
 - Attachment points on unix devices and how to best attach EBS volumes to EC2 instances.
 - Randomness in Terraform and templatefile to add randomness to other files
+- Ansible integration with Terraform and how to pass Terraform details/outputs to Ansible inventory via. templatefile
+- Docker restart flag
 
 ## Resources Used:
 
@@ -73,3 +76,5 @@ The following is provisioned by this Terraform script:
 - https://www.udemy.com/course/terraform-on-aws-with-sre-iac-devops-real-world-demos/learn/
 - https://kodekloud.com/ 's Terraform For Absolute Beginners course
 - https://www.phillipsj.net/posts/random-things-with-terraform/
+- https://stackoverflow.com/questions/45489534/best-way-currently-to-create-an-ansible-inventory-from-terraform
+- https://davelms.medium.com/use-ansible-to-create-and-configure-ec2-instances-on-aws-cfbb0ed019bf
